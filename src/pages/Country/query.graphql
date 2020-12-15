@@ -1,0 +1,20 @@
+query ($numericCode: String!){
+  Country(numericCode: $numericCode) {
+    numericCode
+    name
+    flag {
+      svgFile
+    }
+    capital
+    area
+    population
+    topLevelDomains{
+      name
+    }
+
+    distanceToOtherCountries(first: 5) {
+      distanceInKm
+      countryName
+    }
+  }
+}

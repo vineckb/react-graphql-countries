@@ -1,0 +1,10 @@
+query {
+  Country(first: 10) {
+    numericCode
+    name
+    capital
+    flag {
+      svgFile
+    }
+  }
+}

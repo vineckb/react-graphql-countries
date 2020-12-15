@@ -1,46 +1,25 @@
+import { useQuery } from '@apollo/client'
+import { useParams } from 'react-router-dom'
 import CountryDetails from '../../components/CountryDetails'
 import NearestCountries from '../../components/NearestCountries'
+import { loader } from 'graphql.macro'
 
-const country = {
-  "numericCode": "076",
-  "name": "Brazil",
-  "flag": {
-    "svgFile": "https://restcountries.eu/data/bra.svg"
-  },
-  "capital": "Brasília",
-  "area": 8515767,
-  "population": 206135893,
-  "topLevelDomains": [
-    {
-      "name": ".br"
-    }
-  ]
-}
-
-const nearestCountries = [
-  {
-    "distanceInKm": 1333.0445603821204,
-    "countryName": "Bolivia (Plurinational State of)"
-  },
-  {
-    "distanceInKm": 1481.9677422904354,
-    "countryName": "Paraguay"
-  },
-  {
-    "distanceInKm": 1562.413522321208,
-    "countryName": "Suriname"
-  },
-  {
-    "distanceInKm": 1574.1741073802189,
-    "countryName": "French Guiana"
-  },
-  {
-    "distanceInKm": 1727.7054803482656,
-    "countryName": "Guyana"
-  }
-]
+const query = loader('./query.graphql')
 
 export default function CountryPage() {
+  const { numericCode } = useParams()
+  const { loading, error, data } = useQuery(query, { variables: { numericCode } })
+
+  if (loading) return <p>loading</p>
+
+  if (error) {
+    console.error(error)
+    return <p>{error}</p>
+  }
+
+  const country = data.Country[0]
+  const nearestCountries = data.Country[0].distanceToOtherCountries
+
   return (
     <div>
       <CountryDetails item={country} />
