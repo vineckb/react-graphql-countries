@@ -19,7 +19,7 @@ export default function HomePage() {
     <div>
       <Filter />
 
-      <CountriesList items={data} />
+      <CountriesList items={data.Country} />
     </div>
   )
 }
