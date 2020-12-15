@@ -1,13 +1,13 @@
-import { Link } from 'react-router-dom'
+import * as Styles from './styles'
 
 export default function CountriesListItem({ item }) {
   return (
-    <li>
-      <Link to={`/country/${item.numericCode}`}>
-        <img src={item.flag.svgFile} alt="" />
-        <h3>{item.name}</h3>
-        <p>{item.capital}</p>
-      </Link>
-    </li>
+    <Styles.Wrapper to={`/country/${item.numericCode}`}>
+      <Styles.ImageWrapper>
+        <Styles.Image src={item.flag.svgFile} alt="" />
+      </Styles.ImageWrapper>
+      <Styles.Title>{item.name}</Styles.Title>
+      <Styles.Capital>{item.capital}</Styles.Capital>
+    </Styles.Wrapper>
   )
 }
