@@ -1,5 +1,5 @@
-query {
-  Country(first: 10) {
+query ($offset: Int) {
+  Country(first: 100, offset: $offset) {
     numericCode
     name
     capital
