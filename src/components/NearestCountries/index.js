@@ -30,6 +30,9 @@ export default function NearestCountries({ country }) {
             <p>Distance from {country.name}: {Math.ceil(item.distanceInKm)} km</p>
           </Marker>
         )}
+        <Marker color="green" position={[country.location.longitude, country.location.latitude]}>
+          <h3>{country.name}</h3>
+        </Marker>
       </Map>}
     </div>
   )
