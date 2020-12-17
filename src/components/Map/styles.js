@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
-export const MapContainer = styled.div`
+export const Container = styled.div`
   width: 100%;
   height: 30vw;
-  min-height: 300px;
+  min-height: 400px;
 `
