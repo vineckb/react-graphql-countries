@@ -1,0 +1,13 @@
+query ($names: [String!]!) {
+  Country (filter: {name_in: $names}){
+    name
+    numericCode
+    location{
+      latitude
+      longitude
+    }
+    flag{
+      svgFile
+    }
+  }
+}

@@ -11,6 +11,10 @@ query ($numericCode: String!){
     topLevelDomains{
       name
     }
+    location{
+      latitude
+      longitude
+    }
 
     distanceToOtherCountries(first: 5) {
       distanceInKm

@@ -13,6 +13,7 @@ function App() {
         <div className="App">
           <Helmet>
             <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" />
+            <link rel="stylesheet" type="text/css" href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.css" />
           </Helmet>
           <GlobalStyle />
           <Switch>

@@ -18,13 +18,12 @@ export default function CountryPage() {
   }
 
   const country = data.Country[0]
-  const nearestCountries = data.Country[0].distanceToOtherCountries
 
   return (
     <div>
       <CountryDetails item={country} />
 
-      <NearestCountries items={nearestCountries} />
+      <NearestCountries country={country} />
     </div>
   )
 }
