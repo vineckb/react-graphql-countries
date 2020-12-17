@@ -23,14 +23,6 @@ export default function HomePage() {
           fetchMore({
             variables: {
               offset: data.Country.length
-            },
-            updateQuery: (prev, response) => {
-              const fetchMoreResult = response.fetchMoreResult
-              if (!fetchMoreResult) return prev
-
-              return Object.assign({}, prev, {
-                Country: [...prev.Country, ...fetchMoreResult.Country]
-              })
             }
           })
         }
