@@ -1,5 +1,7 @@
-query ($offset: Int) {
-  Country(first: 100, offset: $offset) {
+query ($offset: Int, $filter: String) {
+  Country(first: 100, offset: $offset, filter: {
+    name_contains: $filter
+  }) {
     numericCode
     name
     capital

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useQuery } from '@apollo/client'
 import Filter from '../../components/Filter'
 import CountriesList from '../../components/CountriesList'
@@ -6,22 +7,17 @@ import { loader } from 'graphql.macro'
 const query = loader('./query.graphql')
 
 export default function HomePage() {
-  const { loading, error, data, fetchMore } = useQuery(query, { variables: { offset: 0 } })
-
-  if (loading) return <p>loading</p>
-
-  if (error) {
-    console.error(error.message)
-    return <p>{error.message}</p>
-  }
-
-  if (!data) return ''
+  const [filter, setFilter] = useState('')
+  const { loading, error, data, fetchMore } = useQuery(query, { variables: { filter } })
 
   return (
     <div>
-      <Filter />
+      <Filter onKeyUp={e => setFilter(e.target.value)} />
 
-      <CountriesList
+      { loading && <p>loading</p>}
+      { error && <p>{error.message}</p>}
+
+      { data && <CountriesList
         items={data.Country}
         onLoadMore={() =>
           fetchMore({
@@ -29,7 +25,6 @@ export default function HomePage() {
               offset: data.Country.length
             },
             updateQuery: (prev, response) => {
-              console.log(response)
               const fetchMoreResult = response.fetchMoreResult
               if (!fetchMoreResult) return prev
 
@@ -39,7 +34,7 @@ export default function HomePage() {
             }
           })
         }
-      />
+      />}
     </div>
   )
 }

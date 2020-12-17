@@ -1,3 +1,3 @@
-export default function Filter() {
-  return (<input />)
+export default function Filter(props) {
+  return (<input {...props} />)
 }
