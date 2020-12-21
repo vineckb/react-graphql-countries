@@ -22,7 +22,7 @@ export default function CountriesList({ items, onLoadMore }) {
   useEffect(() => {
     if (isBottom) {
       onLoadMore()
-      setIsBottom()
+      setIsBottom(false)
     }
   }, [isBottom, setIsBottom, onLoadMore])
 

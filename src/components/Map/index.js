@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import mapbox from 'mapbox-gl'
-import Helmet from 'react-helmet'
+import 'mapbox-gl/dist/mapbox-gl.css'
 import { Container } from './styles'
 
 mapbox.accessToken = 'pk.eyJ1IjoidmluZWNrYiIsImEiOiJja2lzNWhtNXUwcHFnMnFwNDV5MHZsaDlxIn0.IOJkyDCrxaBUpwwGTUXpdg'
@@ -27,9 +27,6 @@ export default function Map({ center, children }) {
 
   return (
     <div>
-      <Helmet>
-        <link rel="stylesheet" type="text/css" href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.css" />
-      </Helmet>
       <Container ref={node}>
         {map && elements}
       </Container>

@@ -6,6 +6,10 @@ export const Wrapper = styled(Link)`
   text-align: center;
   margin-bottom: 30px;
   padding: 0 15px;
+
+  @media (max-width: 700px) {
+    flex-basis: 100%;
+  }
 `
 
 export const Capital = styled.p``
